@@ -4,9 +4,10 @@ import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import { navLinks } from "../../../constants";
+
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
+import { navLinks } from "../../constants";
 
 const Sidebar = () => {
   const pathname = usePathname();

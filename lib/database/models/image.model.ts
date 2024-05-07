@@ -1,4 +1,5 @@
 import { Document, Schema, model, models } from "mongoose";
+import { string } from "zod";
 
 export interface IImage extends Document {
   title: string;
@@ -34,8 +35,8 @@ const ImageSchema = new Schema({
     type: String,
     required: true,
   },
-  secureUrl: {
-    type: URL,
+  secureURL: {
+    type: String,
     required: true,
   },
   width: {
@@ -45,7 +46,7 @@ const ImageSchema = new Schema({
     type: Number,
   },
   config: { type: Object },
-  transformationUrl: { type: URL },
+  transformationUrl: { type: String },
   aspectRatio: { type: String },
   color: { type: String },
   prompt: { type: String },

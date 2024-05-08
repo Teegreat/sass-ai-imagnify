@@ -72,11 +72,11 @@ const TransformationForm = ({
   const initialValues =
     data && action === "Update"
       ? {
-          title: "data?.title",
-          aspectRatio: "data?.aspectRatio",
-          color: "data?.color",
-          prompt: "data?.prompt",
-          publicId: "data?.publicId",
+          title: data?.title,
+          aspectRatio: data?.aspectRatio,
+          color: data?.color,
+          prompt: data?.prompt,
+          publicId: data?.publicId,
         }
       : defaultValues;
   // 1. Define your form.
@@ -230,6 +230,7 @@ const TransformationForm = ({
                 onValueChange={(value) =>
                   onSelectFieldHandler(value, field.onChange)
                 }
+                value={field.value}
               >
                 <SelectTrigger className="select-field">
                   <SelectValue placeholder="Select size" />

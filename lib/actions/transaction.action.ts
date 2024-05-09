@@ -38,21 +38,20 @@ export async function checkoutCredits(transaction: CheckoutTransactionParams) {
   redirect(session.url!);
 }
 
-export async function createTransaction(transaction:CreateTransactionParams) {
-    try {
-        await connectToDatabase()
+export async function createTransaction(transaction: CreateTransactionParams) {
+  try {
+    await connectToDatabase();
 
-        // create a new transaction with buyerId
-        const newTransaction = await Transaction.create({
-            ...transaction,
-            buyer: transaction.buyerId
-        })
+    // create a new transaction with buyerId
+    const newTransaction = await Transaction.create({
+      ...transaction,
+      buyer: transaction.buyerId,
+    });
 
-        await updateCredits(transaction.buyerId, transaction.credits)
+    await updateCredits(transaction.buyerId, transaction.credits);
 
-        return JSON.parse(JSON.stringify(newTransaction))
-
-    } catch (error) {
-        handleError(error)
-    }
+    return JSON.parse(JSON.stringify(newTransaction));
+  } catch (error) {
+    handleError(error);
+  }
 }
